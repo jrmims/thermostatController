@@ -7,27 +7,21 @@
 
 
 
+#include "../inc/main.h"
+#include "../inc/spi.h"
 #include <avr/io.h>
 #include <stdbool.h>
-#include <stdint.h>
-#include "../inc/main.h"
-
-
-
-// function prototypes
-bool buttonPressed(int, volatile uint8_t *);
 
 
 
 void setup(void) {
-	// initialize the digital pin as an output.
+	// initialize pins. 0 is input, 1 is output
 	DDRD &= ~sw1Mask; // set pin7, portD as input
-	DDRB |=  ledMask; // set pin5, portB as output;
+	DDRB |=  ledMask; // LED: set pin5, portB as output;
 }
 
 // the loop routine runs over and over again forever:
 int main() {
-
 	setup();
 
 	bool currentLedState = false; // current stored state
@@ -51,3 +45,4 @@ int main() {
 	return 0;
 
 }
+

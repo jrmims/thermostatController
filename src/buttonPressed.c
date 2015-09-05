@@ -6,11 +6,10 @@
  *
  *      Checks for 0 to 1 transition, with debouncing
  */
+#include <../inc/buttonPressed.h>
 
-#include "../inc/buttonPressed.h"
-#include <util/delay.h>
 
-bool buttonPressed(int mask, volatile uint8_t *port)
+bool buttonPressed(uint8_t mask, volatile uint8_t *port)
 {
 	buttonState = (bool)(mask & ~*port);
 	if (buttonState == false) // currently 0
